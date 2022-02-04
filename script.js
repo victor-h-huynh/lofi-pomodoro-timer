@@ -5,20 +5,27 @@ const startBtn = document.querySelector(".start__btn");
 const stopBtn = document.querySelector(".stop__btn");
 const resetBtn = document.querySelector(".reset__btn");
 const timer = document.querySelector(".timer");
+const sessionCounter = document.querySelector(".session__counter");
 
 let timerId;
 let remainingTime;
+let counter;
 
 /////////////////////////////////////////////////////////////////////
 // Functions
 const startTimer = function () {
-  // let time = 10;
-  let time = +timer.value * 60; // in minutes
+  let time;
 
   if (remainingTime && timer.value.includes(":")) {
     time = remainingTime;
   } else {
-    time = +timer.value * 60;
+    // time = +timer.value * 60;
+    time = 3;
+  }
+
+  if (time === 0) {
+    counter++;
+    console.log(counter);
   }
 
   if (isNaN(time)) return console.error("is not a number");
@@ -58,17 +65,26 @@ const convertTime = function () {
 // Submit Button
 startBtn.addEventListener("click", function () {
   timerId = startTimer();
+  if (startBtn.value === "Resume") {
+    startBtn.value = "Start";
+  }
 });
 
 // Stop Button
 stopBtn.addEventListener("click", function () {
   clearInterval(timerId);
   convertTime();
-  startBtn.textContent = "Resume";
+  if (startBtn.value === "Start") {
+    startBtn.value = "Resume";
+  }
+});
+
+// Reset Button
+resetBtn.addEventListener("click", function () {
+  timer.value = 25;
 });
 
 // If stopped, change submit text to resume. When finished set as start.
 
 // remove if(remainingTime) block.
-// ResetButton to 25minutes
 // When pomodoro hits 0. Add a counter
