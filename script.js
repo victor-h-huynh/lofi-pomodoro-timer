@@ -67,9 +67,8 @@ stopBtn.addEventListener("click", function () {
   startBtn.textContent = "Resume";
 });
 
-// Make conversion into a function. Utility function. String version of time to seconds
 // If stopped, change submit text to resume. When finished set as start.
-// Might run into an issue with conversion. Different when restarting resuming
+
 // remove if(remainingTime) block.
 // ResetButton to 25minutes
 // When pomodoro hits 0. Add a counter
