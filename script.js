@@ -14,12 +14,14 @@ let remainingTime;
 const startTimer = function () {
   // let time = 10;
   let time = +timer.value * 60; // in minutes
-  if (!Number.isInteger(time)) return console.error("is not a number");
 
-  if (remainingTime) {
+  if (remainingTime && timer.value.includes(":")) {
     time = remainingTime;
-    console.log(time);
+  } else {
+    time = +timer.value * 60;
   }
+
+  if (isNaN(time)) return console.error("is not a number");
 
   const timerId = setInterval(() => {
     let mins = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -41,6 +43,15 @@ const startTimer = function () {
   return timerId;
 };
 
+const convertTime = function () {
+  // timer.value contains :
+  // else remainingTime is timer.value
+  remainingTime = timer.value;
+  const [minutes, seconds] = remainingTime.split(":");
+  const totalSeconds = minutes * 60 + +seconds;
+  remainingTime = totalSeconds - 1; // -1 to handle second delay
+};
+
 /////////////////////////////////////////////////////////////////////
 // Event Handlers
 
@@ -52,11 +63,8 @@ startBtn.addEventListener("click", function () {
 // Stop Button
 stopBtn.addEventListener("click", function () {
   clearInterval(timerId);
-  remainingTime = timer.value;
-  const [minutes, seconds] = remainingTime.split(":");
-  const totalSeconds = minutes * 60 + +seconds;
-  remainingTime = totalSeconds;
-  console.log(typeof remainingTime);
+  convertTime();
+  startBtn.textContent = "Resume";
 });
 
 // Make conversion into a function. Utility function. String version of time to seconds
