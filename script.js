@@ -9,7 +9,7 @@ const sessionCounter = document.querySelector(".session__counter");
 
 let timerId;
 let remainingTime;
-let counter;
+let counter = 0;
 
 /////////////////////////////////////////////////////////////////////
 // Functions
@@ -25,7 +25,7 @@ const startTimer = function () {
 
   if (time === 0) {
     counter++;
-    console.log(counter);
+    sessionCounter.insertAdjacentText("beforeend", counter);
   }
 
   if (isNaN(time)) return console.error("is not a number");
@@ -40,10 +40,13 @@ const startTimer = function () {
     } else {
       time--;
     }
+
     timer.value = `${mins}:${secs}`;
     console.log(mins, secs, time);
     if (time === -1) {
       clearInterval(timerId);
+      counter++;
+      sessionCounter.innerHTML = `Session counter: ${counter}`;
     }
   }, 1000);
 
