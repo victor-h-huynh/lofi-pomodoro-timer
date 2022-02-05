@@ -1,6 +1,9 @@
 "use strict";
 /////////////////////////////////////////////////////////////////////
 // Elements
+const pomodoroBtn = document.querySelector(".pomodoro__btn");
+const shortBtn = document.querySelector(".short__btn");
+const longBtn = document.querySelector(".long__btn");
 const startBtn = document.querySelector(".start__btn");
 const stopBtn = document.querySelector(".stop__btn");
 const resetBtn = document.querySelector(".reset__btn");
@@ -65,6 +68,12 @@ const startTimer = function () {
 /////////////////////////////////////////////////////////////////////
 // Event Handlers
 
+// Pomodoro Button
+
+// Short Break Button
+
+// Long Break Button
+
 // Submit Button
 startBtn.addEventListener("click", function () {
   timerId = startTimer();
@@ -80,7 +89,7 @@ stopBtn.addEventListener("click", function () {
 
 // Reset Button
 resetBtn.addEventListener("click", function () {
-  timer.value = 25;
+  timer.innerHTML = 25;
 });
 
 // Music that I downloaded
