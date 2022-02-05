@@ -54,8 +54,6 @@ const startTimer = function () {
 };
 
 const convertTime = function () {
-  // timer.value contains :
-  // else remainingTime is timer.value
   remainingTime = timer.value;
   const [minutes, seconds] = remainingTime.split(":");
   const totalSeconds = minutes * 60 + +seconds;
@@ -86,8 +84,3 @@ stopBtn.addEventListener("click", function () {
 resetBtn.addEventListener("click", function () {
   timer.value = 25;
 });
-
-// If stopped, change submit text to resume. When finished set as start.
-
-// remove if(remainingTime) block.
-// When pomodoro hits 0. Add a counter
