@@ -19,8 +19,8 @@ const startTimer = function () {
   if (remainingTime && timer.value.includes(":")) {
     time = remainingTime;
   } else {
-    // time = +timer.value * 60;
-    time = 3;
+    time = +timer.value * 60;
+    // time = 3;
   }
 
   if (time === 0) {
@@ -29,6 +29,8 @@ const startTimer = function () {
   }
 
   if (isNaN(time)) return console.error("is not a number");
+  if (timer.value > 25) return console.error("Max 25");
+  console.log(timer.value);
 
   const timerId = setInterval(() => {
     let mins = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -53,12 +55,12 @@ const startTimer = function () {
   return timerId;
 };
 
-const convertTime = function () {
-  remainingTime = timer.value;
-  const [minutes, seconds] = remainingTime.split(":");
-  const totalSeconds = minutes * 60 + +seconds;
-  remainingTime = totalSeconds - 1; // -1 to handle second delay
-};
+// const convertTime = function () {
+//   remainingTime = timer.value;
+//   const [minutes, seconds] = remainingTime.split(":");
+//   const totalSeconds = minutes * 60 + +seconds;
+//   remainingTime = totalSeconds - 1; // -1 to handle second delay
+// };
 
 /////////////////////////////////////////////////////////////////////
 // Event Handlers
@@ -66,21 +68,20 @@ const convertTime = function () {
 // Submit Button
 startBtn.addEventListener("click", function () {
   timerId = startTimer();
-  if (startBtn.value === "Resume") {
-    startBtn.value = "Start";
-  }
+  document.querySelector(".start__btn").innerText = "Start";
 });
 
 // Stop Button
 stopBtn.addEventListener("click", function () {
   clearInterval(timerId);
-  convertTime();
-  if (startBtn.value === "Start") {
-    startBtn.value = "Resume";
-  }
+  // convertTime();
+  document.querySelector(".start__btn").innerText = "Resume";
 });
 
 // Reset Button
 resetBtn.addEventListener("click", function () {
   timer.value = 25;
 });
+
+// Music that I downloaded
+// YouTube music
