@@ -1,6 +1,8 @@
 "use strict";
 /////////////////////////////////////////////////////////////////////
 // Elements
+const sessionsContainer = document.querySelector(".sessions__container");
+const sessionsTab = document.querySelectorAll(".sessions__tab");
 const pomodoroBtn = document.querySelector(".pomodoro__btn");
 const shortBtn = document.querySelector(".short__btn");
 const longBtn = document.querySelector(".long__btn");
@@ -29,7 +31,6 @@ const TIME = {
 };
 
 let timerId;
-// let remainingTime;
 let counter = 0;
 let session = SESSIONS.POMODORO;
 let time = TIME[session];
@@ -93,6 +94,39 @@ function resetTimer() {
 
 /////////////////////////////////////////////////////////////////////
 // Event Handlers
+
+// Sessions Container
+sessionsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".sessions__tab");
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Remove active classes
+  sessionsTab.forEach((t) => t.classList.remove("active"));
+
+  // Active Tab
+  clicked.classList.add("active");
+});
+
+// tabsContainer.addEventListener('click', function (e) {
+//   const clicked = e.target.closest('.operations__tab');
+
+//   // Guard clause
+//   if (!clicked) return;
+
+//   // Remove active classes
+//   tabs.forEach(t => t.classList.remove('operations__tab--active'));
+//   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+//   // Active Tab
+//   clicked.classList.add('operations__tab--active');
+
+//   // Activate content area
+//   document
+//     .querySelector(`.operations__content--${clicked.dataset.tab}`)
+//     .classList.add('operations__content--active');
+// });
 
 // Pomodoro Button
 pomodoroBtn.addEventListener("click", function () {
