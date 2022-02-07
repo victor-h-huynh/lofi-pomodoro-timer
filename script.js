@@ -5,7 +5,6 @@ const pomodoroBtn = document.querySelector(".pomodoro__btn");
 const shortBtn = document.querySelector(".short__btn");
 const longBtn = document.querySelector(".long__btn");
 const startBtn = document.querySelector(".start__btn");
-const stopBtn = document.querySelector(".stop__btn");
 const resetBtn = document.querySelector(".reset__btn");
 const timer = document.querySelector(".timer");
 const sessionCounter = document.querySelector(".session__counter");
@@ -19,7 +18,7 @@ const SESSIONS = {
 
 const TIME_STRING = {
   POMODORO: "25:00",
-  SHORT_BREAK: "5:00",
+  SHORT_BREAK: "05:00",
   LONG_BREAK: "10:00",
 };
 
@@ -39,24 +38,10 @@ let started = false;
 /////////////////////////////////////////////////////////////////////
 // Functions
 const startTimerInterval = function () {
-  // let time;
-  console.log(time);
-
-  // if (remainingTime && timer.value.includes(":")) {
-  //   time = remainingTime;
-  // } else {
-  //   time = +timer.value * 60;
-  //   // time = 3;
-  // }
-
   if (time === 0) {
     counter++;
     sessionCounter.insertAdjacentText("beforeend", counter);
   }
-
-  // if (isNaN(time)) return console.error("is not a number");
-  // if (timer.value > 25) return console.error("Max 25");
-  // console.log(timer.value);
 
   const timerId = setInterval(() => {
     let mins = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -81,22 +66,33 @@ const startTimerInterval = function () {
   return timerId;
 };
 
-// const convertTime = function () {
-//   remainingTime = timer.value;
-//   const [minutes, seconds] = remainingTime.split(":");
-//   const totalSeconds = minutes * 60 + +seconds;
-//   remainingTime = totalSeconds - 1; // -1 to handle second delay
-// };
-
-/////////////////////////////////////////////////////////////////////
-// Event Handlers
-
 function changeSession(newSession) {
   session = newSession;
   time = TIME[newSession];
   timer.innerHTML = TIME_STRING[newSession];
   started = false;
 }
+
+function startTimer() {
+  started = true;
+  startBtn.innerHTML = "Stop";
+  timerId = startTimerInterval();
+}
+
+function stopTimer() {
+  started = false;
+  startBtn.innerHTML = "Start";
+  clearInterval(timerId);
+}
+
+function resetTimer() {
+  startBtn.innerHTML = "Start";
+  clearInterval(timerId);
+  changeSession(session);
+}
+
+/////////////////////////////////////////////////////////////////////
+// Event Handlers
 
 // Pomodoro Button
 pomodoroBtn.addEventListener("click", function () {
@@ -116,18 +112,6 @@ longBtn.addEventListener("click", function () {
   clearInterval(timerId);
 });
 
-function startTimer() {
-  started = true;
-  startBtn.innerHTML = "Stop";
-  timerId = startTimerInterval();
-}
-
-function stopTimer() {
-  started = false;
-  startBtn.innerHTML = "Start";
-  clearInterval(timerId);
-}
-
 // Start Button
 startBtn.addEventListener("click", function () {
   if (started) {
@@ -137,21 +121,12 @@ startBtn.addEventListener("click", function () {
   }
 });
 
-function resetTimer() {
-  startBtn.innerHTML = "Start";
-  clearInterval(timerId);
-  changeSession(session);
-}
-
 // Reset Button
 resetBtn.addEventListener("click", function () {
   resetTimer();
 });
 
 // Remaining features
-// - Change button text to resume, only if countdown begun else stays as "Stop"
-// - Spamming start should not increase interval
-// - Clicking result, then clicking start should be a new timer, not the old timer
 // - Connect to YouTube station
 // - Active css class for Pomodoro, Short break or Long break when clicked
 
