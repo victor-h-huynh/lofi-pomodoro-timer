@@ -12,3 +12,8 @@
   background-color: #666;
   color: white;
 }
+
+iframe {
+  transition: opacity 500ms ease-in-out;
+  transition-delay: 250ms;
+}

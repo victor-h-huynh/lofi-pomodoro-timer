@@ -1,4 +1,6 @@
 "use strict";
+import "youtube-background";
+
 /////////////////////////////////////////////////////////////////////
 // Elements
 const sessionsContainer = document.querySelector(".sessions__container");
