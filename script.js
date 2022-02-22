@@ -10,6 +10,7 @@ const startBtn = document.querySelector(".start__btn");
 const resetBtn = document.querySelector(".reset__btn");
 const timer = document.querySelector(".timer");
 const sessionCounter = document.querySelector(".session__counter");
+const youtube = document.querySelector(".youtube");
 
 // enums
 const SESSIONS = {
@@ -39,11 +40,6 @@ let started = false;
 /////////////////////////////////////////////////////////////////////
 // Functions
 const startTimerInterval = function () {
-  if (time === 0) {
-    counter++;
-    sessionCounter.insertAdjacentText("beforeend", counter);
-  }
-
   const timerId = setInterval(() => {
     let mins = String(Math.trunc(time / 60)).padStart(2, 0);
     let secs = String(time % 60).padStart(2, 0);
@@ -57,10 +53,13 @@ const startTimerInterval = function () {
 
     timer.innerHTML = `${mins}:${secs}`;
     console.log(mins, secs, time);
-    if (time === -1) {
+    if (time === -1 && session === "POMODORO") {
       clearInterval(timerId);
       counter++;
       sessionCounter.innerHTML = `Session counter: ${counter}`;
+    }
+    if (time === -1) {
+      clearInterval(timerId);
     }
   }, 1000);
 
@@ -72,6 +71,7 @@ function changeSession(newSession) {
   time = TIME[newSession];
   timer.innerHTML = TIME_STRING[newSession];
   started = false;
+  startBtn.innerHTML = "Start";
 }
 
 function startTimer() {
@@ -109,25 +109,6 @@ sessionsContainer.addEventListener("click", function (e) {
   clicked.classList.add("active");
 });
 
-// tabsContainer.addEventListener('click', function (e) {
-//   const clicked = e.target.closest('.operations__tab');
-
-//   // Guard clause
-//   if (!clicked) return;
-
-//   // Remove active classes
-//   tabs.forEach(t => t.classList.remove('operations__tab--active'));
-//   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
-
-//   // Active Tab
-//   clicked.classList.add('operations__tab--active');
-
-//   // Activate content area
-//   document
-//     .querySelector(`.operations__content--${clicked.dataset.tab}`)
-//     .classList.add('operations__content--active');
-// });
-
 // Pomodoro Button
 pomodoroBtn.addEventListener("click", function () {
   changeSession(SESSIONS.POMODORO);
@@ -148,11 +129,7 @@ longBtn.addEventListener("click", function () {
 
 // Start Button
 startBtn.addEventListener("click", function () {
-  if (started) {
-    stopTimer();
-  } else {
-    startTimer();
-  }
+  started ? stopTimer() : startTimer();
 });
 
 // Reset Button
@@ -162,7 +139,6 @@ resetBtn.addEventListener("click", function () {
 
 // Remaining features
 // - Connect to YouTube station
-// - Active css class for Pomodoro, Short break or Long break when clicked
 
 // Music that I downloaded
 // YouTube music
