@@ -11,7 +11,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <script type="module" defer src="script.js"></script>
+        <!-- <script type="module" defer src="script.js"></script> -->
+        <script async src="script.js"></script>
     </head>
     <body>
         <main class="app">
@@ -28,9 +29,11 @@
                 <div class="row">
                     <button type="submit" value="Start" class="start__btn">Start</button>
                     <button class="reset__btn">Reset</button>
+                    <button class="nextVideo__btn">Next Video</button>
                 </div>
             </div>
             <p class="session__counter">Session counter: 0</p>
         </main>
+        <div id="player"></div>
     </body>
 </html>

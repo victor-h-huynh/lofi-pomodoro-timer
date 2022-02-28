@@ -11,7 +11,7 @@ const startBtn = document.querySelector(".start__btn");
 const resetBtn = document.querySelector(".reset__btn");
 const timer = document.querySelector(".timer");
 const sessionCounter = document.querySelector(".session__counter");
-const youtube = document.querySelector(".youtube");
+const nextVideoBtn = document.querySelector(".nextVideo__btn");
 
 // enums
 const SESSIONS = {
@@ -130,13 +130,94 @@ longBtn.addEventListener("click", function () {
 
 // Start Button
 startBtn.addEventListener("click", function () {
-  started ? stopTimer() : startTimer();
+  started
+    ? (stopTimer(), stopVideo())
+    : (startTimer(), playVideo(), setVolume());
 });
 
 // Reset Button
 resetBtn.addEventListener("click", function () {
   resetTimer();
 });
+
+// Next Video Button
+nextVideoBtn.addEventListener("click", function () {
+  nextVideo();
+});
+
+/////////////////////////////////////////////////////////////////////
+// YouTube Script
+
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement("script");
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player("player", {
+    height: "390",
+    width: "640",
+    videoId: "kgx4WGK0oNU",
+    playerVars: {
+      playsinline: 1,
+      rel: 0,
+    },
+    // events: {
+    //   onReady: onPlayerReady,
+    //   onStateChange: onPlayerStateChange,
+    // },
+  });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+
+/////// TO REMOVE
+// var done = false;
+// function onPlayerStateChange(event) {
+//   if (event.data == YT.PlayerState.PLAYING && !done) {
+//     setTimeout(stopVideo, 6000);
+//     done = true;
+//   }
+// }
+/////// REMOVE ABOVE
+
+function pauseVideo() {
+  player.pauseVideo();
+}
+
+function playVideo() {
+  player.playVideo();
+  player.loadPlaylist(["kgx4WGK0oNU", "bM0Iw7PPoU4", "l7TxwBhtTUY"]);
+}
+
+function stopVideo() {
+  player.stopVideo();
+}
+
+function setVolume() {
+  player.setVolume(10);
+}
+
+function getPlayerState() {
+  return player.getPlayerState();
+}
+
+function nextVideo() {
+  player.nextVideo();
+  setVolume();
+}
 
 // Remaining features
 // - Connect to YouTube station
