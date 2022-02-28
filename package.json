@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "\"lofi-pomodoro-timer\"",
   "main": "script.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +17,5 @@
     "url": "https://github.com/victor-h-huynh/lofi-pomodoro-timer/issues"
   },
   "homepage": "https://github.com/victor-h-huynh/lofi-pomodoro-timer#readme",
-  "dependencies": {
-    "youtube-background": "^1.0.14"
-  }
+  "dependencies": {}
 }
