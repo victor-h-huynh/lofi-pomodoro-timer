@@ -11,8 +11,10 @@ const startBtn = document.querySelector(".start__btn");
 const resetBtn = document.querySelector(".reset__btn");
 const timer = document.querySelector(".timer");
 const sessionCounter = document.querySelector(".session__counter");
+const previousBtn = document.querySelector(".previousVideo__btn");
 const nextVideoBtn = document.querySelector(".nextVideo__btn");
-
+const audioElement = document.querySelector(".audioElement");
+const backgroundElement = document.querySelector(".background");
 // enums
 const SESSIONS = {
   POMODORO: "POMODORO",
@@ -39,7 +41,7 @@ let time = TIME[session];
 let started = false;
 
 /////////////////////////////////////////////////////////////////////
-// Functions
+// Functions For Timer
 const startTimerInterval = function () {
   const timerId = setInterval(() => {
     let mins = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -56,9 +58,12 @@ const startTimerInterval = function () {
     console.log(mins, secs, time);
     if (time === -1 && session === "POMODORO") {
       clearInterval(timerId);
+      alarm();
+      stopVideo();
       counter++;
       sessionCounter.innerHTML = `Session counter: ${counter}`;
     }
+
     if (time === -1) {
       clearInterval(timerId);
     }
@@ -138,6 +143,13 @@ startBtn.addEventListener("click", function () {
 // Reset Button
 resetBtn.addEventListener("click", function () {
   resetTimer();
+  stopVideo();
+  resetAlarm();
+});
+
+// Previous Video Button
+previousBtn.addEventListener("click", function () {
+  previousVideo();
 });
 
 // Next Video Button
@@ -145,17 +157,79 @@ nextVideoBtn.addEventListener("click", function () {
   nextVideo();
 });
 
+backgroundElement.addEventListener("click", function () {
+  changeBackground();
+});
+
+/////////////////////////////////////////////////////////////////////
+// Functions For YouTube
+
+// 3. The API will call this function when the video player is ready.
+function onPlayerReady() {
+  player.loadPlaylist(["kgx4WGK0oNU", "bM0Iw7PPoU4", "l7TxwBhtTUY"]);
+}
+
+function pauseVideo() {
+  player.pauseVideo();
+}
+
+function playVideo() {
+  player.playVideo();
+}
+
+function stopVideo() {
+  player.stopVideo();
+}
+
+function setVolume() {
+  player.setVolume(10);
+}
+
+function previousVideo() {
+  player.previousVideo();
+}
+
+function nextVideo() {
+  player.nextVideo();
+}
+
+// PLAYER FUNCTION NOT IN USE
+// function getPlayerState() {
+//   return player.getPlayerState();
+// }
+
+/////////////////////////////////////////////////////////////////////
+// Functions For Alarm
+
+function alarm() {
+  audioElement.volume = 0.05;
+  audioElement.play();
+}
+
+function resetAlarm() {
+  audioElement.currentTime = 0;
+  audioElement.pause();
+}
+
+/////////////////////////////////////////////////////////////////////
+// Functions For Background
+
+function changeBackground() {
+  let backgroundNumber = Math.trunc(Math.random() * 4);
+  backgroundElement.src = `background${backgroundNumber}.gif`;
+}
+
 /////////////////////////////////////////////////////////////////////
 // YouTube Script
 
-// 2. This code loads the IFrame Player API code asynchronously.
+// 1. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement("script");
 
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// 3. This function creates an <iframe> (and YouTube player)
+// 2. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
@@ -167,60 +241,11 @@ function onYouTubeIframeAPIReady() {
       playsinline: 1,
       rel: 0,
     },
-    // events: {
-    //   onReady: onPlayerReady,
-    //   onStateChange: onPlayerStateChange,
-    // },
+    events: {
+      onReady: onPlayerReady,
+    },
   });
 }
 
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
-}
-
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-
-/////// TO REMOVE
-// var done = false;
-// function onPlayerStateChange(event) {
-//   if (event.data == YT.PlayerState.PLAYING && !done) {
-//     setTimeout(stopVideo, 6000);
-//     done = true;
-//   }
-// }
-/////// REMOVE ABOVE
-
-function pauseVideo() {
-  player.pauseVideo();
-}
-
-function playVideo() {
-  player.playVideo();
-  player.loadPlaylist(["kgx4WGK0oNU", "bM0Iw7PPoU4", "l7TxwBhtTUY"]);
-}
-
-function stopVideo() {
-  player.stopVideo();
-}
-
-function setVolume() {
-  player.setVolume(10);
-}
-
-function getPlayerState() {
-  return player.getPlayerState();
-}
-
-function nextVideo() {
-  player.nextVideo();
-  setVolume();
-}
-
-// Remaining features
-// - Connect to YouTube station
-
-// Music that I downloaded
-// YouTube music
+// Features
+// Don't repeat background

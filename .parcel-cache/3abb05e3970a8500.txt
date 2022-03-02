@@ -1,16 +1,24 @@
-15
-68C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\style.css132900283479492423 0
+23
 69C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\.gitignore132900265184457426 0
 71C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\package.json132905523177013434 0
 76C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\package-lock.json132905523177068530 0
-63C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist132905621546308527 1
-69C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\index.html132905590393107919 0
+63C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist132906894638531318 1
+74C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\background0.gif132906881867830000 0
+84C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\clannad.1ed8ba9b.mp3132906565919707063 0
+74C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\background1.gif132906884218257662 0
+70C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\clannad.mp4132906593991611209 0
+69C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\index.html132906887388000805 0
 68C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\README.md132878687494298553 0
-68C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\script.js132905621545583204 0
-82C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.3a01df49.css132905546517058201 0
-86C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.3a01df49.css.map132905546517058201 0
-81C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.672d4772.js132905621546248470 0
-85C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.672d4772.js.map132905621546248470 0
+68C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\script.js132906894192910982 0
+68C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\style.css132900283479492423 0
+74C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.html132906894638266048 0
+88C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\background0.c04c16e7.gif132906894638170973 0
+84C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\clannad.ffe6ba4f.mp4132906894638155952 0
+83C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\image0.9be51699.gif132906880975343366 0
+82C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.3a01df49.css132906894638231017 0
+86C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.3a01df49.css.map132906894638236032 0
+81C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.672d4772.js132906894638486275 0
+85C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.672d4772.js.map132906894638486275 0
 81C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.8cfc62b9.js132905542058382546 0
 85C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.8cfc62b9.js.map132905542058392555 0
-74C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\index.html132905590394100698 0
+87C:\Users\Victor\Desktop\udemy-projects\lofi-pomodoro-timer\dist\lofigiphy0.f977dbed.gif132906873830186318 0

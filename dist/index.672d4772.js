@@ -10,7 +10,10 @@ const startBtn = document.querySelector(".start__btn");
 const resetBtn = document.querySelector(".reset__btn");
 const timer = document.querySelector(".timer");
 const sessionCounter = document.querySelector(".session__counter");
+const previousBtn = document.querySelector(".previousVideo__btn");
 const nextVideoBtn = document.querySelector(".nextVideo__btn");
+const audioElement = document.querySelector(".audioElement");
+const backgroundElement = document.querySelector(".background");
 // enums
 const SESSIONS = {
     POMODORO: "POMODORO",
@@ -46,6 +49,8 @@ const startTimerInterval = function() {
         console.log(mins, secs, time);
         if (time === -1 && session === "POMODORO") {
             clearInterval(timerId1);
+            alarm();
+            stopVideo();
             counter++;
             sessionCounter.innerHTML = `Session counter: ${counter}`;
         }
@@ -64,6 +69,8 @@ function startTimer() {
     started = true;
     startBtn.innerHTML = "Stop";
     timerId = startTimerInterval();
+    // TESTING PURPOSE SET TIME ON START
+    time = 5;
 }
 function stopTimer() {
     started = false;
@@ -110,10 +117,19 @@ startBtn.addEventListener("click", function() {
 // Reset Button
 resetBtn.addEventListener("click", function() {
     resetTimer();
+    stopVideo();
+    resetAlarm();
+});
+// Previous Video Button
+previousBtn.addEventListener("click", function() {
+    previousVideo();
 });
 // Next Video Button
 nextVideoBtn.addEventListener("click", function() {
     nextVideo();
+});
+backgroundElement.addEventListener("click", function() {
+    changeBackground();
 });
 /////////////////////////////////////////////////////////////////////
 // YouTube Script
@@ -133,12 +149,20 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
             playsinline: 1,
             rel: 0
+        },
+        events: {
+            onReady: onPlayerReady
         }
     });
 }
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-    event.target.playVideo();
+    // event.target.playVideo();
+    player.loadPlaylist([
+        "kgx4WGK0oNU",
+        "bM0Iw7PPoU4",
+        "l7TxwBhtTUY"
+    ]);
 }
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
@@ -157,11 +181,6 @@ function pauseVideo() {
 }
 function playVideo() {
     player.playVideo();
-    player.loadPlaylist([
-        "kgx4WGK0oNU",
-        "bM0Iw7PPoU4",
-        "l7TxwBhtTUY"
-    ]);
 }
 function stopVideo() {
     player.stopVideo();
@@ -172,12 +191,25 @@ function setVolume() {
 function getPlayerState() {
     return player.getPlayerState();
 }
+function previousVideo() {
+    player.previousVideo();
+}
 function nextVideo() {
     player.nextVideo();
-    setVolume();
-} // Remaining features
- // - Connect to YouTube station
- // Music that I downloaded
- // YouTube music
+// setVolume();
+}
+function alarm() {
+    audioElement.volume = 0.05;
+    audioElement.play();
+}
+function resetAlarm() {
+    audioElement.currentTime = 0;
+    audioElement.pause();
+}
+function changeBackground() {
+    console.log(backgroundElement);
+    console.log(backgroundElement.src);
+} // Features
+ // Gify background
 
 //# sourceMappingURL=index.672d4772.js.map
