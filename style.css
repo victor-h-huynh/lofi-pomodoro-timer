@@ -1,3 +1,36 @@
+/* Change font-family for timer */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Press Start 2P", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.app {
+  background-image: url("background0.gif");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  text-shadow: 2px 2px #ff000050;
+}
+
 .sessions__tab {
   border: none;
   outline: none;
@@ -17,3 +50,8 @@ iframe {
   transition: opacity 500ms ease-in-out;
   transition-delay: 250ms;
 }
+
+/* BUG BUTTON CHANGES BACKGROUND
+*/
+
+/* PADDING TO BUTTONS */

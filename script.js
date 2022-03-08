@@ -14,7 +14,8 @@ const sessionCounter = document.querySelector(".session__counter");
 const previousBtn = document.querySelector(".previousVideo__btn");
 const nextVideoBtn = document.querySelector(".nextVideo__btn");
 const audioElement = document.querySelector(".audioElement");
-const backgroundElement = document.querySelector(".background");
+const mainElement = document.querySelector(".app");
+
 // enums
 const SESSIONS = {
   POMODORO: "POMODORO",
@@ -84,6 +85,8 @@ function startTimer() {
   started = true;
   startBtn.innerHTML = "Stop";
   timerId = startTimerInterval();
+  // SET TIME TO 10 SECONDS TEST
+  // time = 10;
 }
 
 function stopTimer() {
@@ -157,7 +160,7 @@ nextVideoBtn.addEventListener("click", function () {
   nextVideo();
 });
 
-backgroundElement.addEventListener("click", function () {
+mainElement.addEventListener("click", function () {
   changeBackground();
 });
 
@@ -166,7 +169,7 @@ backgroundElement.addEventListener("click", function () {
 
 // 3. The API will call this function when the video player is ready.
 function onPlayerReady() {
-  player.loadPlaylist(["kgx4WGK0oNU", "bM0Iw7PPoU4", "l7TxwBhtTUY"]);
+  player.loadPlaylist(["kgx4WGK0oNU", "-5KAN9_CzSA", "l7TxwBhtTUY"]);
 }
 
 function pauseVideo() {
@@ -214,9 +217,12 @@ function resetAlarm() {
 /////////////////////////////////////////////////////////////////////
 // Functions For Background
 
+let count = 1;
 function changeBackground() {
-  let backgroundNumber = Math.trunc(Math.random() * 4);
-  backgroundElement.src = `background${backgroundNumber}.gif`;
+  // let backgroundNumber = Math.trunc(Math.random() * 4);
+  let backgroundNumber = count % 16;
+  count++;
+  mainElement.style.backgroundImage = `url(background${backgroundNumber}.gif)`;
 }
 
 /////////////////////////////////////////////////////////////////////

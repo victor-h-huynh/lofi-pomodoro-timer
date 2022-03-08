@@ -11,13 +11,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <!-- <script type="module" defer src="script.js"></script> -->
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
         <script async src="script.js"></script>
     </head>
     <body>
         <main class="app">
             <div class="container">
-                <h2>Lofi Timer</h2>
+                <h2>Lo-Fi Timer</h2>
                 <div class="sessions__container">
                     <button class="sessions__tab pomodoro__btn active">Pomodoro</button>
                     <button class="sessions__tab short__btn">Short Break</button>
@@ -26,16 +26,15 @@
                 <div class="pomodoro__timer">
                     <h1 class="timer">25:00</h1>
                 </div>
-                <div class="row">
+                <div class="btn__container">
                     <button type="submit" value="Start" class="start__btn">Start</button>
                     <button class="reset__btn">Reset</button>
                     <button class="previousVideo__btn">Previous Video</button>
                     <button class="nextVideo__btn">Next Video</button>
                 </div>
+                <p class="session__counter">Session counter: 0</p>
             </div>
-            <p class="session__counter">Session counter: 0</p>
         </main>
-        <img class="background" src="background3.gif">
         <div id="player"></div>
         <audio autoplay controls="controls" preload="auto" class="audioElement" crossOrigin="anonymous" src="clannad.mp4"></audio>
     </body>

@@ -36,7 +36,7 @@ let session = SESSIONS.POMODORO;
 let time = TIME[session];
 let started = false;
 /////////////////////////////////////////////////////////////////////
-// Functions
+// Functions For Timer
 const startTimerInterval = function() {
     const timerId1 = setInterval(()=>{
         let mins = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -69,8 +69,8 @@ function startTimer() {
     started = true;
     startBtn.innerHTML = "Stop";
     timerId = startTimerInterval();
-    // TESTING PURPOSE SET TIME ON START
-    time = 5;
+// SET TIME TO 10 SECONDS TEST
+// time = 10;
 }
 function stopTimer() {
     started = false;
@@ -132,13 +132,65 @@ backgroundElement.addEventListener("click", function() {
     changeBackground();
 });
 /////////////////////////////////////////////////////////////////////
+// Functions For YouTube
+// 3. The API will call this function when the video player is ready.
+function onPlayerReady() {
+    player.loadPlaylist([
+        "kgx4WGK0oNU",
+        "-5KAN9_CzSA",
+        "l7TxwBhtTUY"
+    ]);
+}
+function pauseVideo() {
+    player.pauseVideo();
+}
+function playVideo() {
+    player.playVideo();
+}
+function stopVideo() {
+    player.stopVideo();
+}
+function setVolume() {
+    player.setVolume(10);
+}
+function previousVideo() {
+    player.previousVideo();
+}
+function nextVideo() {
+    player.nextVideo();
+}
+// PLAYER FUNCTION NOT IN USE
+// function getPlayerState() {
+//   return player.getPlayerState();
+// }
+/////////////////////////////////////////////////////////////////////
+// Functions For Alarm
+function alarm() {
+    audioElement.volume = 0.05;
+    audioElement.play();
+}
+function resetAlarm() {
+    audioElement.currentTime = 0;
+    audioElement.pause();
+}
+/////////////////////////////////////////////////////////////////////
+// Functions For Background
+let count = 0;
+function changeBackground() {
+    // let backgroundNumber = Math.trunc(Math.random() * 4);
+    // backgroundElement.src = `background${backgroundNumber}.gif`;
+    let backgroundNumber = count % 4;
+    count++;
+    backgroundElement.src = `background${backgroundNumber}.gif`;
+}
+/////////////////////////////////////////////////////////////////////
 // YouTube Script
-// 2. This code loads the IFrame Player API code asynchronously.
+// 1. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-// 3. This function creates an <iframe> (and YouTube player)
+// 2. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
@@ -154,62 +206,7 @@ function onYouTubeIframeAPIReady() {
             onReady: onPlayerReady
         }
     });
-}
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-    // event.target.playVideo();
-    player.loadPlaylist([
-        "kgx4WGK0oNU",
-        "bM0Iw7PPoU4",
-        "l7TxwBhtTUY"
-    ]);
-}
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-/////// TO REMOVE
-// var done = false;
-// function onPlayerStateChange(event) {
-//   if (event.data == YT.PlayerState.PLAYING && !done) {
-//     setTimeout(stopVideo, 6000);
-//     done = true;
-//   }
-// }
-/////// REMOVE ABOVE
-function pauseVideo() {
-    player.pauseVideo();
-}
-function playVideo() {
-    player.playVideo();
-}
-function stopVideo() {
-    player.stopVideo();
-}
-function setVolume() {
-    player.setVolume(10);
-}
-function getPlayerState() {
-    return player.getPlayerState();
-}
-function previousVideo() {
-    player.previousVideo();
-}
-function nextVideo() {
-    player.nextVideo();
-// setVolume();
-}
-function alarm() {
-    audioElement.volume = 0.05;
-    audioElement.play();
-}
-function resetAlarm() {
-    audioElement.currentTime = 0;
-    audioElement.pause();
-}
-function changeBackground() {
-    console.log(backgroundElement);
-    console.log(backgroundElement.src);
 } // Features
- // Gify background
+ // Don't repeat background
 
 //# sourceMappingURL=index.672d4772.js.map
