@@ -10,7 +10,7 @@
         <title>Lofi Timer</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
         <script async src="script.js"></script>
     </head>
@@ -18,19 +18,19 @@
         <main class="app">
             <div class="container">
                 <h2>Lo-Fi Timer</h2>
-                <div class="sessions__container">
-                    <button class="btn sessions__tab pomodoro__btn active">Pomodoro</button>
-                    <button class="btn sessions__tab short__btn">Short Break</button>
-                    <button class="btn sessions__tab long__btn">Long Break</button>
+                <div class="container__sessions">
+                    <button class="btn--round sessions--tab btn--pomodoro active">Pomodoro</button>
+                    <button class="btn--round sessions--tab btn--short">Short Break</button>
+                    <button class="btn--round sessions--tab btn--long">Long Break</button>
                 </div>
                 <div class="pomodoro__timer">
                     <h1 class="timer">25:00</h1>
                 </div>
-                <div class="controls__container">
-                    <button class="btn control__btn start__btn" type="submit" value="Start" >Start</button>
-                    <button class="btn control__btn reset__btn">Reset</button>
-                    <button class="btn control__btn previousVideo__btn">Previous Video</button>
-                    <button class="btn control__btn nextVideo__btn">Next Video</button>
+                <div class="container__controls">
+                    <button class="btn--round control--btn btn--start" type="submit" value="Start" >Start</button>
+                    <button class="btn--round control--btn btn--reset">Reset</button>
+                    <button class="btn--round control--btn btn--previousVideo">Previous Video</button>
+                    <button class="btn--round control--btn btn--nextVideo">Next Video</button>
                 </div>
                 <p class="session__counter">Session counter: 0</p>
             </div>

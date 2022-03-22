@@ -24,7 +24,7 @@ body {
 /*  Application */
 
 .app {
-  background-image: url("background0.gif");
+  background-image: url("../background0.gif");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -44,17 +44,17 @@ body {
   text-align: center;
 }
 
-.btn {
+.btn--round {
   border-radius: 10rem;
 }
 
 /*////////////////////////////////////////////////////////////////////*/
 /*  Sessions */
 
-.sessions__container {
+.container__sessions {
 }
 
-.sessions__tab {
+.sessions--tab {
   border: none;
   outline: none;
   padding: 1rem 1.6rem;
@@ -76,10 +76,10 @@ body {
 /*////////////////////////////////////////////////////////////////////*/
 /*  Controls */
 
-.controls__container {
+.container__controls {
 }
 
-.control__btn {
+.control--btn {
   padding: 1rem 1.6rem;
   transition: all 0.2s;
 }
@@ -128,4 +128,8 @@ iframe {
 }
 
 /* BUG BUTTON CHANGES BACKGROUND
-*/
+  */
+
+/* See how buttons look as like text */
+
+// Clean up file structure

@@ -2,17 +2,17 @@
 
 /////////////////////////////////////////////////////////////////////
 // Elements
-const sessionsContainer = document.querySelector(".sessions__container");
-const sessionsTab = document.querySelectorAll(".sessions__tab");
-const pomodoroBtn = document.querySelector(".pomodoro__btn");
-const shortBtn = document.querySelector(".short__btn");
-const longBtn = document.querySelector(".long__btn");
-const startBtn = document.querySelector(".start__btn");
-const resetBtn = document.querySelector(".reset__btn");
+const sessionsContainer = document.querySelector(".container__sessions");
+const sessionsTab = document.querySelectorAll(".sessions--tab");
+const pomodoroBtn = document.querySelector(".btn--pomodoro");
+const shortBtn = document.querySelector(".btn--short");
+const longBtn = document.querySelector(".btn--long");
+const startBtn = document.querySelector(".btn--start");
+const resetBtn = document.querySelector(".btn--reset");
 const timer = document.querySelector(".timer");
 const sessionCounter = document.querySelector(".session__counter");
-const previousBtn = document.querySelector(".previousVideo__btn");
-const nextVideoBtn = document.querySelector(".nextVideo__btn");
+const previousBtn = document.querySelector(".btn--previousVideo");
+const nextVideoBtn = document.querySelector(".btn--nextVideo");
 const audioElement = document.querySelector(".audioElement");
 const mainElement = document.querySelector(".app");
 
@@ -222,7 +222,7 @@ function changeBackground() {
   // let backgroundNumber = Math.trunc(Math.random() * 4);
   let backgroundNumber = count % 16;
   count++;
-  mainElement.style.backgroundImage = `url(background${backgroundNumber}.gif)`;
+  mainElement.style.backgroundImage = `url(../background${backgroundNumber}.gif)`;
 }
 
 /////////////////////////////////////////////////////////////////////
