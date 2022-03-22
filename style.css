@@ -1,17 +1,27 @@
-/* Change font-family for timer */
+/*////////////////////////////////////////////////////////////////////*/
+/*  Page */
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
   font-family: "Press Start 2P", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.7;
+
+  box-sizing: border-box;
 }
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  Application */
 
 .app {
   background-image: url("background0.gif");
@@ -19,6 +29,8 @@ body {
   background-position: center;
   height: 100vh;
   position: relative;
+  backface-visibility: hidden;
+  animation: moveInLeft 2s ease-out;
 }
 
 .container {
@@ -29,22 +41,86 @@ body {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   text-shadow: 2px 2px #ff000050;
+  text-align: center;
+}
+
+.btn {
+  border-radius: 10rem;
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  Sessions */
+
+.sessions__container {
 }
 
 .sessions__tab {
   border: none;
   outline: none;
-  padding: 10px 16px;
+  padding: 1rem 1.6rem;
   background-color: #f1f1f1;
   cursor: pointer;
   transition-duration: 0.4s;
+  transition: all 0.2s;
 }
 
-.active,
-.btn:hover {
+/*////////////////////////////////////////////////////////////////////*/
+/*  Pomodoro Timer */
+
+.pomodoro__timer {
+}
+
+.timer {
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  Controls */
+
+.controls__container {
+}
+
+.control__btn {
+  padding: 1rem 1.6rem;
+  transition: all 0.2s;
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  Session Counter */
+.session__counter {
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  States */
+
+.active {
   background-color: #666;
   color: white;
 }
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  YouTube */
 
 iframe {
   transition: opacity 500ms ease-in-out;
@@ -53,5 +129,3 @@ iframe {
 
 /* BUG BUTTON CHANGES BACKGROUND
 */
-
-/* PADDING TO BUTTONS */
