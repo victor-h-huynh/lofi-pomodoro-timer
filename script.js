@@ -3,7 +3,8 @@
 /////////////////////////////////////////////////////////////////////
 // Elements
 const sessionsContainer = document.querySelector(".container__sessions");
-const sessionsTab = document.querySelectorAll(".sessions--tab");
+const controlsContainer = document.querySelector(".container__controls");
+const sessionsTab = document.querySelectorAll(".btn--sessions");
 const pomodoroBtn = document.querySelector(".btn--pomodoro");
 const shortBtn = document.querySelector(".btn--short");
 const longBtn = document.querySelector(".btn--long");
@@ -78,12 +79,12 @@ function changeSession(newSession) {
   time = TIME[newSession];
   timer.innerHTML = TIME_STRING[newSession];
   started = false;
-  startBtn.innerHTML = "Start";
+  startBtn.innerHTML = "play_arrow";
 }
 
 function startTimer() {
   started = true;
-  startBtn.innerHTML = "Stop";
+  startBtn.innerHTML = "pause";
   timerId = startTimerInterval();
   // SET TIME TO 10 SECONDS TEST
   // time = 10;
@@ -91,12 +92,12 @@ function startTimer() {
 
 function stopTimer() {
   started = false;
-  startBtn.innerHTML = "Start";
+  startBtn.innerHTML = "play_arrow";
   clearInterval(timerId);
 }
 
 function resetTimer() {
-  startBtn.innerHTML = "Start";
+  startBtn.innerHTML = "play_arrow";
   clearInterval(timerId);
   changeSession(session);
 }
@@ -106,7 +107,8 @@ function resetTimer() {
 
 // Sessions Container
 sessionsContainer.addEventListener("click", function (e) {
-  const clicked = e.target.closest(".sessions__tab");
+  e.stopPropagation();
+  const clicked = e.target.closest(".btn--sessions");
 
   // Guard clause
   if (!clicked) return;
@@ -136,6 +138,11 @@ longBtn.addEventListener("click", function () {
   clearInterval(timerId);
 });
 
+// Controls Container
+controlsContainer.addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
 // Start Button
 startBtn.addEventListener("click", function () {
   started
@@ -160,7 +167,7 @@ nextVideoBtn.addEventListener("click", function () {
   nextVideo();
 });
 
-mainElement.addEventListener("click", function () {
+mainElement.addEventListener("click", function (e) {
   changeBackground();
 });
 
@@ -222,7 +229,7 @@ function changeBackground() {
   // let backgroundNumber = Math.trunc(Math.random() * 4);
   let backgroundNumber = count % 16;
   count++;
-  mainElement.style.backgroundImage = `url(../background${backgroundNumber}.gif)`;
+  mainElement.style.backgroundImage = `url(../img/background${backgroundNumber}.gif)`;
 }
 
 /////////////////////////////////////////////////////////////////////

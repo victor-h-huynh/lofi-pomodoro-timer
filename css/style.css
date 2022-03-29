@@ -1,24 +1,32 @@
 /*////////////////////////////////////////////////////////////////////*/
-/*  Page */
+/*  Base Page CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: inherit; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  overflow: hidden; }
 
 body {
   font-family: "Press Start 2P", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
   line-height: 1.7;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow: hidden; }
+
+#player {
+  display: none; }
+
+.audioElement {
+  display: none; }
 
 /*////////////////////////////////////////////////////////////////////*/
 /*  Application */
 .app {
-  background-image: url("../background0.gif");
+  background-image: url("../img/background0.gif");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -28,56 +36,59 @@ body {
 
 .container {
   position: absolute;
-  top: 40%;
+  top: 85%;
   left: 50%;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   text-shadow: 2px 2px #ff000050;
-  text-align: center; }
-
-.btn--round {
-  border-radius: 10rem; }
+  color: #ebebeb;
+  text-align: center;
+  width: 50%; }
 
 /*////////////////////////////////////////////////////////////////////*/
-/*  Sessions */
-.sessions--tab {
+/*  Application */
+.header__text-box {
+  margin-bottom: 1rem; }
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  Buttons */
+.btn {
   border: none;
   outline: none;
   padding: 1rem 1.6rem;
-  background-color: #f1f1f1;
   cursor: pointer;
   transition-duration: 0.4s;
   transition: all 0.2s; }
+  .btn--round {
+    border-radius: 10rem; }
+  .btn:hover {
+    transform: translateY(-0.2rem);
+    text-decoration: underline white 0.14rem; }
+  .btn:active {
+    transform: translateY(0rem); }
+
+/*////////////////////////////////////////////////////////////////////*/
+/*  Sessions */
+.container__sessions {
+  font-size: 1rem;
+  margin-bottom: 1rem; }
 
 /*////////////////////////////////////////////////////////////////////*/
 /*  Pomodoro Timer */
 /*////////////////////////////////////////////////////////////////////*/
 /*  Controls */
-.control--btn {
-  padding: 1rem 1.6rem;
-  transition: all 0.2s; }
-
 /*////////////////////////////////////////////////////////////////////*/
 /*  Session Counter */
 /*////////////////////////////////////////////////////////////////////*/
 /*  States */
 .active {
-  background-color: #666;
-  color: white; }
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-.btn:active {
-  transform: translateY(0px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  text-decoration: underline white 0.14rem; }
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-30px); }
+    transform: translateX(-3rem); }
   100% {
     opacity: 1;
     transform: translateX(0); } }
@@ -88,6 +99,20 @@ iframe {
   transition: opacity 500ms ease-in-out;
   transition-delay: 250ms; }
 
-/* BUG BUTTON CHANGES BACKGROUND
-  */
-/* See how buttons look as like text */
+/*////////////////////////////////////////////////////////////////////*/
+/*  Media Queries */
+@media all and (max-width: 810px) {
+  .container {
+    width: 90%; } }
+
+@media all and (max-width: 507px) {
+  .container {
+    width: 65%; } }
+
+@media all and (max-width: 443px) {
+  .container {
+    width: 74%; } }
+
+@media all and (max-width: 389px) {
+  .container {
+    width: 84%; } }
