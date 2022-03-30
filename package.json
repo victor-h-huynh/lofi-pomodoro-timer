@@ -5,8 +5,8 @@
   "main": "script.js",
   "type": "module",
   "scripts": {
-    "dev": "parcel src/index.html",
-    "prod": "parcel build src/index.html",
+    "dev": "parcel index.html",
+    "prod": "parcel build index.html",
     "compile:sass": "node-sass sass/main.scss css/style.css -w"
   },
   "repository": {
