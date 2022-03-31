@@ -44,12 +44,13 @@ body {
 
 .container {
   position: absolute;
-  top: 60%;
+  top: 70%;
   left: 50%;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  text-shadow: 2px 2px #ff000050;
+  text-shadow: -2px 2px 0 rgba(138, 0, 0, 0.3), 2px 2px 0 rgba(138, 0, 0, 0.3),
+    2px -2px 0 rgba(138, 0, 0, 0.3), -2px -2px 0 rgba(138, 0, 0, 0.3);
   color: rgb(235, 235, 235);
   text-align: center;
   width: 50%;
