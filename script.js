@@ -229,7 +229,12 @@ function changeBackground() {
   // let backgroundNumber = Math.trunc(Math.random() * 4);
   let backgroundNumber = count % 25;
   count++;
-  mainElement.style.backgroundImage = `url(../dist/background${backgroundNumber}.gif)`;
+  // mainElement.style.backgroundImage = `url(../static/background${backgroundNumber}.gif)`;
+
+  mainElement.setAttribute(
+    "style",
+    `background-image: url(background${backgroundNumber}.gif)`
+  );
 }
 
 /////////////////////////////////////////////////////////////////////
