@@ -231,6 +231,11 @@ function changeBackground() {
   count++;
   // mainElement.style.backgroundImage = `url(../static/background${backgroundNumber}.gif)`;
 
+  const imageUrl = new URL("./dist/background1.gif", import.meta.url);
+  mainElement.style.backgroundImage = imageUrl;
+
+  console.log(mainElement);
+  console.log(imageUrl);
   mainElement.setAttribute(
     "style",
     `background-image: url(./dist/background${backgroundNumber}.gif)`
