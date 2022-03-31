@@ -192,7 +192,7 @@ function stopVideo() {
 }
 
 function setVolume() {
-  player.setVolume(10);
+  player.setVolume(100);
 }
 
 function previousVideo() {
