@@ -236,7 +236,6 @@ function changeBackground() {
     `background-image: url(./static/background${backgroundNumber}.gif)`
   );
 }
-//
 /////////////////////////////////////////////////////////////////////
 // YouTube Script
 
