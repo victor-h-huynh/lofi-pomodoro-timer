@@ -24,5 +24,13 @@
     "node-sass": "^7.0.1",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-static-files-copy": "^2.6.0"
+  },
+    "staticFiles": {
+      "staticPath": [
+          {
+              "staticPath": "static",
+              "staticOutDir": "static"
+          }
+      ]
   }
 }

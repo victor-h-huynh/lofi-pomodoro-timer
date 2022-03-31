@@ -233,7 +233,7 @@ function changeBackground() {
 
   mainElement.setAttribute(
     "style",
-    `background-image: url(./dist/background${backgroundNumber}.gif)`
+    `background-image: url(./static/background${backgroundNumber}.gif)`
   );
 }
 
