@@ -176,7 +176,14 @@ mainElement.addEventListener("click", function (e) {
 
 // 3. The API will call this function when the video player is ready.
 function onPlayerReady() {
-  player.loadPlaylist(["kgx4WGK0oNU", "-5KAN9_CzSA", "l7TxwBhtTUY"]);
+  player.loadPlaylist([
+    "-rPjez8z61rI",
+    "E2vONfzoyRI",
+    "JD-kMIpDfnY",
+    "blAFxjhg62k",
+    "TfWotiyXGfI",
+    "l7TxwBhtTUY",
+  ]);
 }
 
 function pauseVideo() {
@@ -233,7 +240,7 @@ function changeBackground() {
 
   mainElement.setAttribute(
     "style",
-    `background-image: url(./static/background${backgroundNumber}.gif)`
+    `background-image: url(./static/background${backgroundNumber}.gif)`,
   );
 }
 /////////////////////////////////////////////////////////////////////
