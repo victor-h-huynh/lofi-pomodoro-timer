@@ -179,8 +179,8 @@ function onPlayerReady() {
   player.loadPlaylist([
     "-rPjez8z61rI",
     "E2vONfzoyRI",
-    "JD-kMIpDfnY",
     "blAFxjhg62k",
+    "JD-kMIpDfnY",
     "TfWotiyXGfI",
     "l7TxwBhtTUY",
   ]);
@@ -199,7 +199,7 @@ function stopVideo() {
 }
 
 function setVolume() {
-  player.setVolume(10);
+  player.setVolume(3);
 }
 
 function previousVideo() {
