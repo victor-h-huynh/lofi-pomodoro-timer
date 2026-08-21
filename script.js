@@ -176,7 +176,8 @@ mainElement.addEventListener("click", function (e) {
 
 // 3. The API will call this function when the video player is ready.
 function onPlayerReady() {
-  player.loadPlaylist([
+  player.setVolume(3);
+  player.cuePlaylist([
     "-rPjez8z61rI",
     "E2vONfzoyRI",
     "blAFxjhg62k",
@@ -264,6 +265,7 @@ function onYouTubeIframeAPIReady() {
     playerVars: {
       playsinline: 1,
       rel: 0,
+      autoplay: 0,
     },
     events: {
       onReady: onPlayerReady,
